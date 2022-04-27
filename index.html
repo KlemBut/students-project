@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formu uzduotis</title>
+    <link rel="stylesheet" href="./styleUpd.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="mainWrapper">
+        <form action="" class="leftSideWrapper">
+            <div class="personal_info">
+                <div class="nameWrapper">
+                    <div>
+                        <label for="name">First name</label>
+                        <input type="text" name="name" id="name" class="required" >
+                    </div>
+                    <div>
+                        <label for="lname">Last name</label>
+                        <input type="text" name="lname" id="lname" class="required">
+                    </div>
+                </div>
+            <label for="age">Age</label>
+            <input type="number" name="age" id="age" class="required">
+            <label for="phone">Phone number</label>
+            <input type="tel" name="phone" id="phone">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="reqSuired">
+        </div>
+        <div class="slider">
+            <label for="score">Rate your IT skills 1 to 10</label>
+            <input type="range" name="score" id="score" step="1"  min="1" max="10" value = "5">
+            <output name="output" id="score_output"></output>
+        </div>
+        <div class="radiohead">
+            <label for="group" style="display: block;">Which group are you in?</label>
+            <div class="radioSelectionWrapper">
+                <div>
+                    <input type="radio" name="group" id="1gr" value="1st" checked>
+                    <label for="1gr">1st group</label>
+                </div>
+                <div>
+                    <input type="radio" name="group" id="2gr" value="2nd">
+                    <label for="2gr">2nd group</label>
+                </div>
+                <div>
+                    <input type="radio" name="group" id="3gr" value="3rd">
+                    <label for="3gr">3rd group</label>
+                </div>
+                <div>
+                    <input type="radio" name="group" id="4gr" value="4th">
+                    <label for="4gr">4th group</label>
+                </div>
+                <div>
+                    <input type="radio" name="group" id="5gr" value="5th">
+                    <label for="5gr">5th group</label>
+                </div>
+                <div>
+                    <input type="radio" name="group" id="6gr" value="6th">
+                    <label for="6gr">6th group</label>
+                </div>
+                <div>
+                    <input type="radio" name="group" id="7gr" value="7th">
+                    <label for="7gr">7th group</label>
+                </div>
+                <div>
+                    <input type="radio" name="group" id="8gr" value="8th">
+                    <label for="8gr">8th group</label>
+                </div>
+                <div>
+                    <input type="radio" name="group" id="9gr" value="9th">
+                    <label for="9gr">9th group</label>
+                </div>
+                <div>
+                    <input type="radio" name="group" id="10gr" value="10th">
+                    <label for="10gr">10th group</label>
+                </div>
+        </div>
+    </div>
+        <div class="language">
+            <fieldset>
+                <legend>Prefered language:</legend>
+                <input type="checkbox" name="prog" id="python" value="Python">
+                <label for="python">Python</label>
+                <input type="checkbox" name="prog" id="javascript" value="JavaScript">
+                <label for="javascript">JavaScript</label>
+                <input type="checkbox" name="prog" id="php" value="PHP">
+                <label for="php">PHP</label>
+                <input type="checkbox" name="prog" id="java" value="JAVA">
+                <label for="java">JAVA</label>
+            </fieldset>
+            </div>
+            <div class="submitWrapper">
+                <input type="reset" value="Reset">
+                <input type="submit" value="Submit">
+            </div>
+        <span id="alert"></span>
+    </form>
+    <div class="rightSideWrapper">
+        <div class="filtrasWrapper">
+            <form class="filtras">
+                <select name="filterBy" id="filterBy">
+                    <option value="search-all">All</option>
+                    <option value="search-fname">By Name</option>
+                    <option value="search-lname">By Surname</option>
+                    <option value="search-age">By Age</option>
+                    <option value="search-score">By Score</option>
+                    <option   option value="search-group">By Group</option>
+                    <option value="search-lang">By Language</option>
+                </select>
+            <input type="text" id="filtras">
+            <input type="button" value="Remove filter">
+            <input type="submit" value="Filter">
+        </form>
+    </div>
+    <div class="students-list" ></div>
+</div>
+</div>
+    <script src="contactForm.js"></script>
+</body>
+</html>

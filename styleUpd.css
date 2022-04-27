@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,700;1,300;1,600&display=swap");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+.hider {
+  display: none;
+}
+
+.red-border {
+  border: 1px solid red;
+}
+
+body {
+  background-color: #E4D4C8;
+  padding: 5% 20% 5% 20%;
+  font-family: "Rubik", sans-serif;
+}
+
+.mainWrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.personal_info {
+  display: flex;
+  flex-direction: column;
+}
+
+.leftSideWrapper {
+  width: 40%;
+  height: 40%;
+  padding: 2em;
+  background-color: #A47551;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 2em;
+  border-radius: 3px;
+  box-shadow: 0 2px 3px #646363;
+}
+
+.rightSideWrapper {
+  width: 40%;
+  padding: 2em;
+  background-color: #D0B49F;
+  border-radius: 3px;
+  box-shadow: 0 2px 3px #646363;
+}
+
+.personal_info input {
+  border-radius: 3px;
+  border: none;
+}
+
+.personal_info label {
+  margin-top: 0.5em;
+  margin-bottom: 0.2em;
+  font-weight: 700;
+}
+
+.nameWrapper {
+  display: flex;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+
+.nameWrapper div label {
+  display: block;
+}
+
+.nameWrapper div input {
+  width: calc(108% - 10px);
+}
+
+.slider {
+  margin-top: 0.5em;
+}
+
+.slider label {
+  margin-bottom: 0.2em;
+  font-weight: 700;
+}
+
+.radiohead label:first-child {
+  margin-top: 0.5em;
+  margin-bottom: 0.2em;
+  font-weight: 700;
+}
+
+.radioSelectionWrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 100px;
+}
+
+fieldset {
+  margin-top: 0.5em;
+}
+
+fieldset legend {
+  font-weight: 700;
+}
+
+[type^=submit] {
+  background: #99603a;
+  background-image: linear-gradient(to bottom, #99603a, #523A28);
+  border-radius: 3px;
+  color: #ffffff;
+  padding: 5px 20px 5px 20px;
+  margin-top: 0.5em;
+  border: none;
+}
+
+[type^=submit]:hover {
+  background: #523A28;
+  background-image: linear-gradient(to bottom, #523A28, #99603a);
+}
+
+[type^=reset] {
+  background: #99603a;
+  background-image: linear-gradient(to bottom, #99603a, #523A28);
+  border-radius: 3px;
+  color: #ffffff;
+  padding: 5px 20px 5px 20px;
+  margin-top: 0.5em;
+  border: none;
+}
+
+[type^=reset]:hover {
+  background: #523A28;
+  background-image: linear-gradient(to bottom, #523A28, #99603a);
+}
+
+#filterBy {
+  margin-bottom: 0.2em;
+  border: none;
+  border-radius: 3px;
+}
+
+.filtras [type^=button] {
+  background: #99603a;
+  background-image: linear-gradient(to bottom, #99603a, #523A28);
+  border-radius: 3px;
+  color: #ffffff;
+  padding: 5px 20px 5px 20px;
+  margin-top: 0.5em;
+  border: none;
+}
+
+#filtras {
+  border-radius: 3px;
+  border: none;
+}
+
+.student-item {
+  border-bottom: 2px solid #401717;
+}
+.student-item p {
+  margin-top: 0.5em;
+  margin-bottom: 0.2em;
+}
+.student-item h4 {
+  margin-top: 0.5em;
+  margin-bottom: 0.2em;
+}
+.student-item div ul {
+  margin-top: 0.5em;
+  margin-bottom: 0.2em;
+  padding-left: 1em;
+}
+.student-item button {
+  margin-top: 0.5em;
+  margin-bottom: 0.3em;
+  margin-right: 0.2em;
+  background: linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
+  background-color: #7d5d3b;
+  border-radius: 3px;
+  border: 1px solid #54381e;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 3px 12px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #4d3534;
+}
+.student-item button:hover {
+  background: linear-gradient(to bottom, #634b30 5%, #7d5d3b 100%);
+  background-color: #634b30;
+}
+.student-item button:active {
+  position: relative;
+  top: 1px;
+}/*# sourceMappingURL=styleUpd.css.map */
