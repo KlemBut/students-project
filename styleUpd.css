@@ -123,6 +123,11 @@ fieldset legend {
   background-image: linear-gradient(to bottom, #523A28, #99603a);
 }
 
+[type^=submit]:active {
+  position: relative;
+  top: 1px;
+}
+
 [type^=reset] {
   background: #99603a;
   background-image: linear-gradient(to bottom, #99603a, #523A28);
@@ -136,6 +141,11 @@ fieldset legend {
 [type^=reset]:hover {
   background: #523A28;
   background-image: linear-gradient(to bottom, #523A28, #99603a);
+}
+
+[type^=reset]:active {
+  position: relative;
+  top: 1px;
 }
 
 #filterBy {
