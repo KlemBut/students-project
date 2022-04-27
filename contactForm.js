@@ -1,7 +1,8 @@
 let form = document.querySelector(`form`);
 let studentsList = document.querySelector(`.students-list`);
 let editStudent = null;
-
+console.log("helllo")
+console.log("HIII")
 let baseStudents = [
   {
     name: "Klemensas",
