@@ -1,60 +1,61 @@
+let studentsLocalStorage = JSON.parse(localStorage.getItem('studentItemStor'));
+let baseStudents = studentsLocalStorage ? studentsLocalStorage : [];
 let form = document.querySelector(`form`);
 let studentsList = document.querySelector(`.students-list`);
 let editStudent = null;
-console.log("helllo")
-console.log("HIII")
-let baseStudents = [
-  {
-    name: "Klemensas",
-    lastName: "Butkevičius",
-    age: 29,
-    Phone: `+370655252`,
-    Email: `hihihi@hihihi.com`,
-    Score: 1,
-    Group: "2nd",
-    preferedLanguages: [`JavaScript`, `JAVA`],
-  },
-  {
-    name: "Vytas",
-    lastName: "Nesvarbu",
-    age: 44,
-    Phone: `+370655252`,
-    Email: `hihihi@hihihi.com`,
-    Score: 5,
-    Group: "2nd",
-    preferedLanguages: [`JavaScript`],
-  },
-  {
-    name: "Tomas",
-    lastName: "Netavoreikalas",
-    age: 22,
-    Phone: `+3706553252`,
-    Email: `hihihi@hihihi.com`,
-    Score: 7,
-    Group: "3rd",
-    preferedLanguages: [`Python`, `JavaScript`],
-  },
-  {
-    name: "Marcipanija",
-    lastName: "Koziuri",
-    age: 22,
-    Phone: `+370655252`,
-    Email: `hihihi@hihihi.com`,
-    Score: 5,
-    Group: "7th",
-    preferedLanguages: [`PHP`],
-  },
-  {
-    name: "Ilgas",
-    lastName: "BMW",
-    age: 22,
-    Phone: `+370655252`,
-    Email: `hihihi@hihihi.com`,
-    Score: 6,
-    Group: "4th",
-    preferedLanguages: [`JavaScript`, `JAVA`],
-  },
-];
+
+// let baseStudents = [
+//   {
+//     name: "Klemensas",
+//     lastName: "Butkevičius",
+//     age: 29,
+//     Phone: `+370655252`,
+//     Email: `hihihi@hihihi.com`,
+//     Score: 1,
+//     Group: "2nd",
+//     preferedLanguages: [`JavaScript`, `JAVA`],
+//   },
+//   {
+//     name: "Vytas",
+//     lastName: "Nesvarbu",
+//     age: 44,
+//     Phone: `+370655252`,
+//     Email: `hihihi@hihihi.com`,
+//     Score: 5,
+//     Group: "2nd",
+//     preferedLanguages: [`JavaScript`],
+//   },
+//   {
+//     name: "Tomas",
+//     lastName: "Netavoreikalas",
+//     age: 22,
+//     Phone: `+3706553252`,
+//     Email: `hihihi@hihihi.com`,
+//     Score: 7,
+//     Group: "3rd",
+//     preferedLanguages: [`Python`, `JavaScript`],
+//   },
+//   {
+//     name: "Marcipanija",
+//     lastName: "Koziuri",
+//     age: 22,
+//     Phone: `+370655252`,
+//     Email: `hihihi@hihihi.com`,
+//     Score: 5,
+//     Group: "7th",
+//     preferedLanguages: [`PHP`],
+//   },
+//   {
+//     name: "Ilgas",
+//     lastName: "BMW",
+//     age: 22,
+//     Phone: `+370655252`,
+//     Email: `hihihi@hihihi.com`,
+//     Score: 6,
+//     Group: "4th",
+//     preferedLanguages: [`JavaScript`, `JAVA`],
+//   },
+// ];
 
 function renderStudent(studentData) {
   let nameSel = studentData.name;
@@ -85,7 +86,7 @@ function renderStudent(studentData) {
   emailEl.innerHTML = `<strong>Email:</strong> ${secret}`;
   let scoreEl = document.createElement(`p`);
   scoreEl.innerHTML = `<strong>Score:</strong> <span class="scoreSearch">${scoreSel}</span>`;
-  let groupEl = document.createElement(`p`);
+  let groupEl = document.createElement(`p`); 
   groupEl.innerHTML = `<strong>Group:</strong> <span class="groupSearch">${groupSel}</span>`;
   // let langEl = document.createElement (`p`);
   // langEl.innerHTML = `<strong>Prefered language:</strong> ${values.join(`, `)}`
@@ -134,7 +135,19 @@ function renderStudent(studentData) {
     }
   });
   // revealPersonalData(reveal, phoneEl, nameSel, secret);
+  // let studItmObj = {
+  //   name: nameSel,
+  //   lname: lnameSel,
+  //   age: ageSel,
+  //   phone: phoneSel,
+  //   email: emailSel,
+  //   score: scoreSel,
+  //   group: groupSel,
+  //   prefferedLang: prefLang,
+  // }
+  
 
+  
   editStudentButton.textContent = `Edit`;
   editStudentButton.addEventListener(`click`, () => {
     form.querySelector(`#name`).value = nameSel;
@@ -143,11 +156,17 @@ function renderStudent(studentData) {
     form.querySelector(`#phone`).value = phoneSel;
     form.querySelector(`#score`).value = scoreSel;
     form.querySelector(`#email`).value = emailSel;
+    form.elements.group.value = groupSel;
     // form.querySelector(`#group`).value = groupSel;
-
+    prefLang.map(singleInterest => {
+      form.elements.prog.forEach(formInterest => {
+        if(singleInterest === formInterest.value){
+          formInterest.checked = true;
+        }
+      })
+    })
     scoreReset();
     form.querySelector(`[type = submit]`).value = `Save Changes`;
-    form.elements.group.value = groupSel;
     editStudent = studentItem;
   });
   if (editStudent) {
@@ -191,6 +210,11 @@ form.addEventListener("submit", (event) => {
   }
   
   renderStudent(studentFormData);
+  let studentsDataArray = [studentFormData, ...baseStudents]
+  // studentsDataArray.push(studentData)
+  // console.log(studentsDataArray.concat(baseStudents));
+  // console.log([...baseStudents, ...studentsDataArray])
+  localStorage.setItem(`studentItemStor`, JSON.stringify(studentsDataArray));
   errMesageRemoval(inputErrorMessages);
   if (editStudent) {
     alertMessage(
@@ -205,11 +229,15 @@ form.addEventListener("submit", (event) => {
   scoreReset();
 });
 function renderInitialStudentData(students) {
+  if(!students){
+    return;
+  }
+
   students.map((student) => {
     renderStudent(student);
   });
 }
-renderInitialStudentData(baseStudents);
+// renderInitialStudentData(baseStudents);
 
 function scoreReset() {
   let scoreSlider = document.querySelector("#score");
@@ -407,21 +435,76 @@ function paieska(paieskosLaukasValue, kurIesko) {
 // form.querySelector('#email').value = localStorage.getItem('email')
 // form.querySelector('#score').value = localStorage.getItem('score')
 // form.elements.group.value = localStorage.getItem('group')
-
 form.addEventListener(`input`, (event) =>{
-  console.log(event.target.id)
-  let inputName = event.target.id;
-  let inputvalue = event.target.value;
-  localStorage.setItem(inputName, inputvalue)
+ 
+  formInfo = {
+    name: form.querySelector('#name').value,
+    lname:form.querySelector('#lname').value,
+    age:form.querySelector('#age').value,
+    phone:form.querySelector('#phone').value,
+    email:form.querySelector('#email').value,
+    score:form.querySelector('#score').value,
+    group:form.elements.group.value,
+    prog:[]
+  }
+  form.querySelectorAll('input[name=prog]:checked').forEach(interest => {
+    formInfo.prog.push(interest.value)
+  })
+  // console.log(event.target.name) 
+  // if(event.target.name === 'prog'){
+  //   console.log(event.target.id)
+  //   console.log(event.target.value)
+  //   formInfo.prog.push(event.target.value)
+  // }
+    localStorage.setItem('form-info', JSON.stringify(formInfo))
+});
+
+let localStorageInfo = JSON.parse(localStorage.getItem('form-info'))
+
+form.querySelector('#name').value = localStorageInfo.name;
+form.querySelector('#lname').value = localStorageInfo.lname;
+form.querySelector('#age').value = localStorageInfo.age;
+form.querySelector('#phone').value = localStorageInfo.phone;
+form.querySelector('#email').value = localStorageInfo.email;
+form.querySelector('#score').value = localStorageInfo.score;
+form.elements.group.value = localStorageInfo.group
+
+localStorageInfo.prog.forEach (interest =>{
+  form.querySelector(`input[value = ${interest}]`).checked = true
 })
+// form.addEventListener(`input`, (event) =>{
+//   console.log(event.target.id)
+//   let inputName = event.target.id;
+//   let inputvalue = event.target.value;
+//   localStorage.setItem(inputName, inputvalue)
+// })
   
 
-form.querySelector('#name').value = localStorage.getItem('name')
-form.querySelector('#lname').value = localStorage.getItem('lname')
-form.querySelector('#age').value = localStorage.getItem('age')
-form.querySelector('#phone').value = localStorage.getItem('phone')
-form.querySelector('#email').value = localStorage.getItem('email')
-form.querySelector('#score').value = localStorage.getItem('score')
-form.elements.group.value = localStorage.getItem('group')
+// form.querySelector('#name').value = localStorage.getItem('name')
+// form.querySelector('#lname').value = localStorage.getItem('lname')
+// form.querySelector('#age').value = localStorage.getItem('age')
+// form.querySelector('#phone').value = localStorage.getItem('phone')
+// form.querySelector('#email').value = localStorage.getItem('email')
+// form.querySelector('#score').value = localStorage.getItem('score')
+// form.elements.group.value = localStorage.getItem('group')
 
 scoreReset();
+// SEPTINTA UŽDUOTIS:
+// 1. Studento kūrimo ir redagavimo metu reikia sukurti visų studentų masyvą (tokiu pačiu formatu kaip ir INITIAL_STUDENT_DATA).
+// 2. Šį masyvą pridėti į localStorage.
+// 3. Puslapio perkrovimo metu iš localStorage esančio masyvo sukurti studentų sąrašą (pradinių studentų sukūrimo funkcionalumas).
+
+// document.querySelectorAll('.student-item').forEach ((element) => {
+//   let studItmObj = Object.assign({}, element.childNodes)
+// console.log(studItmObj)
+// delete studItmObj[`8`]
+// delete studItmObj[`9`]
+// delete studItmObj[`10`]
+// console.log(studItmObj)
+// localStorage.setItem('studentItmStor', JSON.stringify(studItmObj))
+// })
+// console.log()
+// console.log((JSON.parse(`{"Hello": "Whats up?", "Hi": "Whatis on?" }`)))
+
+
+renderInitialStudentData(baseStudents);
